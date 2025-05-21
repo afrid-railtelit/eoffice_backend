@@ -1,0 +1,87 @@
+[
+  { "code": "BSL", "name": "Bhusaval", "description": "Division in Maharashtra", "zoneCode": "CR" },
+  { "code": "CSTM", "name": "Mumbai", "description": "Mumbai CSMT Division", "zoneCode": "CR" },
+  { "code": "NGP", "name": "Nagpur", "description": "Nagpur Division", "zoneCode": "CR" },
+  { "code": "PUNE", "name": "Pune", "description": "Pune Division", "zoneCode": "CR" },
+  { "code": "SUR", "name": "Solapur", "description": "Solapur Division", "zoneCode": "CR" },
+
+  { "code": "ASN", "name": "Asansol", "description": "Asansol Division", "zoneCode": "ER" },
+  { "code": "HWH", "name": "Howrah", "description": "Howrah Division", "zoneCode": "ER" },
+  { "code": "MLDT", "name": "Malda", "description": "Malda Division", "zoneCode": "ER" },
+  { "code": "SDAH", "name": "Sealdah", "description": "Sealdah Division", "zoneCode": "ER" },
+
+  { "code": "DDU", "name": "Pt. Deen Dayal Upadhyaya", "description": "Formerly Mughalsarai", "zoneCode": "ECR" },
+  { "code": "DHN", "name": "Dhanbad", "description": "Dhanbad Division", "zoneCode": "ECR" },
+  { "code": "DNR", "name": "Danapur", "description": "Danapur Division", "zoneCode": "ECR" },
+  { "code": "SEE", "name": "Sonpur", "description": "Sonpur Division", "zoneCode": "ECR" },
+  { "code": "SPJ", "name": "Samastipur", "description": "Samastipur Division", "zoneCode": "ECR" },
+
+  { "code": "KUR", "name": "Khurda Road", "description": "Khurda Road Division", "zoneCode": "ECOR" },
+  { "code": "SBP", "name": "Sambalpur", "description": "Sambalpur Division", "zoneCode": "ECOR" },
+  { "code": "WAT", "name": "Waltair", "description": "Waltair Division", "zoneCode": "ECOR" },
+
+  { "code": "DLI", "name": "Delhi", "description": "Delhi Division", "zoneCode": "NR" },
+  { "code": "FZR", "name": "Firozpur", "description": "Firozpur Division", "zoneCode": "NR" },
+  { "code": "UMB", "name": "Ambala", "description": "Ambala Division", "zoneCode": "NR" },
+  { "code": "LDH", "name": "Ludhiana", "description": "Ludhiana Division", "zoneCode": "NR" },
+  { "code": "MB", "name": "Moradabad", "description": "Moradabad Division", "zoneCode": "NR" },
+
+  { "code": "AGC", "name": "Agra", "description": "Agra Division", "zoneCode": "NCR" },
+  { "code": "JHS", "name": "Jhansi", "description": "Jhansi Division", "zoneCode": "NCR" },
+  { "code": "PRYJ", "name": "Prayagraj", "description": "Prayagraj Division", "zoneCode": "NCR" },
+
+  { "code": "BSB", "name": "Varanasi", "description": "Varanasi Division", "zoneCode": "NER" },
+  { "code": "IZN", "name": "Izzatnagar", "description": "Izzatnagar Division", "zoneCode": "NER" },
+  { "code": "LJN", "name": "Lucknow", "description": "Lucknow NER Division", "zoneCode": "NER" },
+
+  { "code": "APDJ", "name": "Alipurduar", "description": "Alipurduar Division", "zoneCode": "NFR" },
+  { "code": "KIR", "name": "Katihar", "description": "Katihar Division", "zoneCode": "NFR" },
+  { "code": "LMG", "name": "Lumding", "description": "Lumding Division", "zoneCode": "NFR" },
+  { "code": "RNY", "name": "Rangiya", "description": "Rangiya Division", "zoneCode": "NFR" },
+  { "code": "TSK", "name": "Tinsukia", "description": "Tinsukia Division", "zoneCode": "NFR" },
+
+  { "code": "AII", "name": "Ajmer", "description": "Ajmer Division", "zoneCode": "NWR" },
+  { "code": "BKN", "name": "Bikaner", "description": "Bikaner Division", "zoneCode": "NWR" },
+  { "code": "JP", "name": "Jaipur", "description": "Jaipur Division", "zoneCode": "NWR" },
+  { "code": "JU", "name": "Jodhpur", "description": "Jodhpur Division", "zoneCode": "NWR" },
+
+  { "code": "MAS", "name": "Chennai", "description": "Chennai Division", "zoneCode": "SR" },
+  { "code": "MDU", "name": "Madurai", "description": "Madurai Division", "zoneCode": "SR" },
+  { "code": "PGT", "name": "Palakkad", "description": "Palakkad Division", "zoneCode": "SR" },
+  { "code": "SA", "name": "Salem", "description": "Salem Division", "zoneCode": "SR" },
+  { "code": "TPJ", "name": "Tiruchirappalli", "description": "Tiruchirappalli Division", "zoneCode": "SR" },
+  { "code": "TVC", "name": "Thiruvananthapuram", "description": "Thiruvananthapuram Division", "zoneCode": "SR" },
+
+  { "code": "BZA", "name": "Vijayawada", "description": "Vijayawada Division", "zoneCode": "SCR" },
+  { "code": "GNT", "name": "Guntur", "description": "Guntur Division", "zoneCode": "SCR" },
+  { "code": "GTL", "name": "Guntakal", "description": "Guntakal Division", "zoneCode": "SCR" },
+  { "code": "HYB", "name": "Hyderabad", "description": "Hyderabad Division", "zoneCode": "SCR" },
+  { "code": "NED", "name": "Nanded", "description": "Nanded Division", "zoneCode": "SCR" },
+  { "code": "SC", "name": "Secunderabad", "description": "Secunderabad Division", "zoneCode": "SCR" },
+
+  { "code": "ADRA", "name": "Adra", "description": "Adra Division", "zoneCode": "SER" },
+  { "code": "CKP", "name": "Chakradharpur", "description": "Chakradharpur Division", "zoneCode": "SER" },
+  { "code": "KGP", "name": "Kharagpur", "description": "Kharagpur Division", "zoneCode": "SER" },
+  { "code": "RNC", "name": "Ranchi", "description": "Ranchi Division", "zoneCode": "SER" },
+
+  { "code": "BSP", "name": "Bilaspur", "description": "Bilaspur Division", "zoneCode": "SECR" },
+  { "code": "R", "name": "Raipur", "description": "Raipur Division", "zoneCode": "SECR" },
+  { "code": "NGP", "name": "Nagpur", "description": "Nagpur Division", "zoneCode": "SECR" },
+
+  { "code": "MYS", "name": "Mysuru", "description": "Mysuru Division", "zoneCode": "SWR" },
+  { "code": "SBC", "name": "Bengaluru", "description": "Bengaluru Division", "zoneCode": "SWR" },
+  { "code": "UBL", "name": "Hubballi", "description": "Hubballi Division", "zoneCode": "SWR" },
+
+  { "code": "ADI", "name": "Ahmedabad", "description": "Ahmedabad Division", "zoneCode": "WR" },
+  { "code": "BCT", "name": "Mumbai Central", "description": "Mumbai Central Division", "zoneCode": "WR" },
+  { "code": "BRC", "name": "Vadodara", "description": "Vadodara Division", "zoneCode": "WR" },
+  { "code": "BVP", "name": "Bhavnagar", "description": "Bhavnagar Division", "zoneCode": "WR" },
+  { "code": "RTM", "name": "Ratlam", "description": "Ratlam Division", "zoneCode": "WR" },
+  { "code": "RJT", "name": "Rajkot", "description": "Rajkot Division", "zoneCode": "WR" },
+
+  { "code": "BPL", "name": "Bhopal", "description": "Bhopal Division", "zoneCode": "WCR" },
+  { "code": "JBP", "name": "Jabalpur", "description": "Jabalpur Division", "zoneCode": "WCR" },
+  { "code": "KOTA", "name": "Kota", "description": "Kota Division", "zoneCode": "WCR" },
+
+  { "code": "MRK", "name": "Metro Railway Kolkata", "description": "Single division for Kolkata Metro", "zoneCode": "MRK" }
+]

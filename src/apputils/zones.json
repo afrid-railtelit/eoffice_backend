@@ -1,0 +1,20 @@
+[
+  { "code": "CR", "name": "Central Railway", "description": "Headquartered in Mumbai, serves Maharashtra and parts of MP and Karnataka" },
+  { "code": "ER", "name": "Eastern Railway", "description": "Based in Kolkata, covers eastern West Bengal and parts of Jharkhand" },
+  { "code": "ECR", "name": "East Central Railway", "description": "Headquartered in Hajipur, covers Bihar and parts of Jharkhand and UP" },
+  { "code": "ECOR", "name": "East Coast Railway", "description": "Headquartered in Bhubaneswar, serves Odisha, Andhra Pradesh and Chhattisgarh" },
+  { "code": "NR", "name": "Northern Railway", "description": "Based in Delhi, covers northern India including Punjab, Haryana and UP" },
+  { "code": "NCR", "name": "North Central Railway", "description": "Based in Prayagraj, covers UP, MP, Rajasthan" },
+  { "code": "NER", "name": "North Eastern Railway", "description": "Based in Gorakhpur, covers eastern UP and parts of Bihar" },
+  { "code": "NFR", "name": "Northeast Frontier Railway", "description": "Based in Maligaon, Guwahati, covers NE states and parts of Bengal" },
+  { "code": "NWR", "name": "North Western Railway", "description": "Headquartered in Jaipur, serves Rajasthan and parts of Haryana and Punjab" },
+  { "code": "SR", "name": "Southern Railway", "description": "Based in Chennai, covers Tamil Nadu, Kerala and parts of AP and Karnataka" },
+  { "code": "SCR", "name": "South Central Railway", "description": "Headquartered in Secunderabad, covers Telangana, Andhra Pradesh, and Maharashtra" },
+  { "code": "SER", "name": "South Eastern Railway", "description": "Based in Kolkata, serves Jharkhand, Odisha, and West Bengal" },
+  { "code": "SECR", "name": "South East Central Railway", "description": "Based in Bilaspur, covers Chhattisgarh and parts of MP and Maharashtra" },
+  { "code": "SWR", "name": "South Western Railway", "description": "Headquartered in Hubballi, covers Karnataka and Goa" },
+  { "code": "WR", "name": "Western Railway", "description": "Headquartered in Mumbai, covers Gujarat, Maharashtra, MP and Rajasthan" },
+  { "code": "WCR", "name": "West Central Railway", "description": "Based in Jabalpur, covers MP and parts of UP and Rajasthan" },
+  { "code": "MRK", "name": "Metro Railway Kolkata", "description": "Exclusive zone for Kolkata Metro, based in Kolkata" },
+  { "code": "KR", "name": "Konkan Railway", "description": "Covers Konkan coast but is a corporation under Ministry of Railways" }
+]
