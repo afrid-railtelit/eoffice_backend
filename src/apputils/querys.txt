@@ -1,0 +1,46 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE IF NOT EXISTS zones (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  code VARCHAR(10) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT
+);
+CREATE TABLE IF NOT EXISTS divisions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  code VARCHAR(10) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT,
+  zone_id UUID NOT NULL,
+  FOREIGN KEY (zone_id) REFERENCES zones(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  first_name TEXT NOT NULL,
+  last_name TEXT,
+  email_id VARCHAR(255) UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  mobile_number VARCHAR(20),
+  initial_login BOOLEAN DEFAULT TRUE,
+  disabled BOOLEAN DEFAULT FALSE,
+  deleted BOOLEAN DEFAULT FALSE,
+  role VARCHAR(50) DEFAULT 'user',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE TABLE browser_details  (
+      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      ip TEXT,
+      device_type VARCHAR(20),
+      os_name VARCHAR(20),
+      os_version VARCHAR(5),
+      browser_name VARCHAR(15),
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  email_id VARCHAR(255) NOT NULL
+)
+CREATE TABLE issues (
+  id SERIAL PRIMARY KEY DEFAULT uuid_generate_v4(),
+  issue_code VARCHAR(255),
+  issue_description TEXT,
+  issue_resolution TEXT
+);

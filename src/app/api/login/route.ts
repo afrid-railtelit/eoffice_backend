@@ -1,9 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { decodeString, generateOTP, sendOtpEmail } from "@/apputils/appUtils";
 import pool from "@/apputils/pool";
 import { NextResponse } from "next/server";
+import { UAParser } from "ua-parser-js";
 
 export async function POST(req: Request) {
   try {
+    const headers = Object.fromEntries(req.headers);
+
+    const forwardedFor = headers["x-forwarded-for"];
+    const ip = forwardedFor.replace("::ffff:", "") || "Unknown";
+    const uaString = headers["user-agent"] || "";
+    const parser = new UAParser(uaString);
+    const ua = parser.getResult();
+
     const { otp, emailId, password } = await req.json();
 
     if (!emailId || !password) {
@@ -18,7 +28,7 @@ export async function POST(req: Request) {
     }
 
     const userData = await pool.query(
-      `SELECT email_id as "emailId",first_name as "firstName",last_name as "lastName",password,otp,role FROM users WHERE email_id = $1`,
+      `SELECT email_id as "emailId",first_name as "firstName",last_name as "lastName",password,otp,role,disabled FROM users WHERE email_id = $1`,
       [emailId]
     );
 
@@ -26,6 +36,16 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           data: "USER_NOT_FOUND",
+        },
+        {
+          status: 200,
+        }
+      );
+    }
+    if (userData?.rows[0]?.disabled === true) {
+      return NextResponse.json(
+        {
+          data: "DISABLED",
         },
         {
           status: 200,
@@ -63,9 +83,28 @@ export async function POST(req: Request) {
           );
       } else {
         if (userData?.rows[0]?.otp?.toString() === otp?.toString()) {
+          const lastLoginDetails = await pool.query(
+            `SELECT ip,device_type AS "deviceType",os_name AS "osName",os_version AS "osVersion",browser_name AS "broswerName",email_id AS "emailId",updated_at as "updatedAt" 
+             FROM browser_details  WHERE email_id = $1 ORDER BY updated_at DESC LIMIT 1`,
+            [emailId]
+          );
+
+          await pool.query(
+            `INSERT INTO  browser_details (ip,device_type,os_name,os_version,browser_name,email_id) VALUES($1,$2,$3,$4,$5,$6)`,
+            [
+              ip,
+              ua?.device?.type ?? "desktop",
+              ua?.os?.name,
+              ua?.os?.version,
+              ua?.browser?.name,
+              emailId,
+            ]
+          );
+
           return NextResponse.json({
             data: "SUCCESS",
             user: userData?.rows[0],
+            lastLoginDetails: lastLoginDetails?.rows[0],
           });
         } else
           return NextResponse.json(

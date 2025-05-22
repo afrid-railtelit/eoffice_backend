@@ -36,38 +36,69 @@ export function generateOTP(length: number): string {
 
   
 
-  export async function sendEmail(user: EmailPayload): Promise<"SUCCESS" | "ERROR"> {
-    const url = "https://freeemailapi.vercel.app/sendEmail/";
 
-    const htmlBody = `
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-      <h2 style="color: #0055A4;">Welcome to Railtel e-Office Helpdesk!</h2>
-      <p>Dear <strong>${user.name}</strong>,</p>
-      <p>Thank you for registering with the Railtel e-Office Helpdesk.</p>
-      <p>Your account has been successfully created. Please find your login credentials below:</p>
+export async function sendEmail(user: EmailPayload): Promise<"SUCCESS" | "ERROR"> {
+  const url = "https://freeemailapi.vercel.app/sendEmail/";
 
-      <table style="border-collapse: collapse; margin: 16px 0; font-size: 16px;">
-        <tr>
-          <td style="padding: 8px; font-weight: bold; border: 1px solid #ddd;">Email:</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${user.email}</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; font-weight: bold; border: 1px solid #ddd;">Password:</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${user.password}</td>
-        </tr>
-      </table>
+  let subject: string;
+  let title: string;
+  let htmlBody: string;
 
-      <p>If you did not request this account or believe you received this email in error, please disregard this message or contact Railtel Helpdesk immediately.</p>
+  if (user?.password) {
+    // Account creation email
+    subject = "Your Railtel e-Office Account Credentials";
+    title = "Welcome to Railtel e-Office Helpdesk";
+    htmlBody = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h2 style="color: #0055A4;">Welcome to Railtel e-Office Helpdesk!</h2>
+        <p>Dear <strong>${user.name}</strong>,</p>
+        <p>Thank you for registering with the Railtel e-Office Helpdesk.</p>
+        <p>Your account has been successfully created. Please find your login credentials below:</p>
 
-      <p style="margin-top: 24px;">
-        Regards,<br />
-        Railtel Corporation of India<br />
-        e-Office Helpdesk Team
-      </p>
-    </div>
-  `;
+        <table style="border-collapse: collapse; margin: 16px 0; font-size: 16px;">
+          <tr>
+            <td style="padding: 8px; font-weight: bold; border: 1px solid #ddd;">Email:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${user.email}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; font-weight: bold; border: 1px solid #ddd;">Password:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${user.password}</td>
+          </tr>
+        </table>
 
-    const response = await fetch(url, {
+        <p>If you did not request this account or believe you received this email in error, please disregard this message or contact Railtel Helpdesk immediately.</p>
+
+        <p style="margin-top: 24px;">
+          Regards,<br />
+          Railtel Corporation of India<br />
+          e-Office Helpdesk Team
+        </p>
+      </div>
+    `;
+  } else {
+    // Account enabled/disabled notification
+    subject = "Your Railtel e-Office Account Status Changed";
+    title = "Account Status Update - Railtel e-Office Helpdesk";
+    const statusText = user.enabled ? "enabled" : "disabled";
+
+    htmlBody = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h2 style="color: #0055A4;">Account Status Changed</h2>
+        <p>Dear <strong>${user.name}</strong>,</p>
+        <p>Your account on the Railtel e-Office Helpdesk has been <strong>${statusText}</strong>.</p>
+
+        <p>If you believe this change was made in error, please contact the Helpdesk team immediately.</p>
+
+        <p style="margin-top: 24px;">
+          Regards,<br />
+          Railtel Corporation of India<br />
+          e-Office Helpdesk Team
+        </p>
+      </div>
+    `;
+  }
+
+  const response = await fetch(url, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -76,21 +107,20 @@ export function generateOTP(length: number): string {
     body: JSON.stringify({
       toEmail: user.email,
       body: htmlBody,
-      title: "Welcome to Railtel e-Office Helpdesk",
-      subject: "Your Railtel e-Office Account Credentials",
+      title,
+      subject,
     }),
   });
 
-    const result = await response.json();
+  const result = await response.json();
 
-    if (result?.message === "wrongEmail") {
-      return "ERROR";
-    } else if (result?.message === "emailSendSuccess") {
-      return "SUCCESS";
-    } else {
-      return "ERROR";
-    }
+  if (result?.message === "emailSendSuccess") {
+    return "SUCCESS";
+  } else {
+    return "ERROR";
   }
+}
+
 
 
 

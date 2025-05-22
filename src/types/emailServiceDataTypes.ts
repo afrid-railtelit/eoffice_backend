@@ -9,5 +9,6 @@ export type OtpEmailPayload = {
 export type EmailPayload = {
   email: string;
   name: string;
-  password: string;
+  password?: string;
+    enabled: boolean;
 };
