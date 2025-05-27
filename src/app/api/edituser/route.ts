@@ -23,12 +23,13 @@ export async function POST(req: Request) {
       );
     } else if (method === "editUser") {
       result = await pool.query(
-        "UPDATE users SET email_Id = $1,updated_at = NOW(),mobile_number = $2,first_name = $3,last_name = $4 WHERE email_id = $5",
+        "UPDATE users SET email_Id = $1,updated_at = NOW(),mobile_number = $2,first_name = $3,last_name = $4,level = $5 WHERE email_id = $6",
         [
           userData?.email,
           userData?.mobile,
           userData?.firstName,
           userData?.lastName,
+          userData?.level,
           emailId,
         ]
       );
@@ -43,7 +44,7 @@ export async function POST(req: Request) {
             (result.rows[0].last_name ? result.rows[0].last_name : ""),
           email: emailId,
           enabled: !disabled,
-          password:""
+          password: "",
         });
       }
 

@@ -17,6 +17,7 @@ export async function GET(req: Request) {
       deleted: rest?.deleted,
       createdAt: rest?.created_at,
       role: rest?.role,
+      level: rest?.level,
       name: rest?.first_name + " " + (rest?.last_name ? rest?.last_name : ""),
     }));
 

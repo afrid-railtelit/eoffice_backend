@@ -10,5 +10,5 @@ export type EmailPayload = {
   email: string;
   name: string;
   password?: string;
-    enabled: boolean;
+    enabled?: boolean;
 };

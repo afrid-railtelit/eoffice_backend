@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     }
 
     const userData = await pool.query(
-      `SELECT email_id as "emailId",first_name as "firstName",last_name as "lastName",password,otp,role,disabled FROM users WHERE email_id = $1`,
+      `SELECT email_id as "emailId",first_name as "firstName",last_name as "lastName",password,otp,role,disabled,initial_login AS "initialLogin",level FROM users WHERE email_id = $1`,
       [emailId]
     );
 

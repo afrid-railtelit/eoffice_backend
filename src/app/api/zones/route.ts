@@ -8,6 +8,7 @@ export async function GET() {
       `
         SELECT zones.code AS "zoneCode",
                 zones.name AS "zoneName",
+                zones.id,
                 zones.description AS "zoneDescription",
                 COALESCE(
                     json_agg(json_build_object(
@@ -16,7 +17,7 @@ export async function GET() {
                     ) ),'[]'
                 ) AS  divisions FROM zones 
                  LEFT JOIN divisions ON divisions.zone_id = zones.id
-                 GROUP BY zones.code,zones.name,zones.description
+                 GROUP BY zones.id, zones.code,zones.name,zones.description
         
         `
     );

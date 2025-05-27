@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const result = await pool.query(
-      "SELECT issue_code AS issueCode,issue_description AS issueDescription,issue_resolution AS issueResoltion FROM issues"
+      `SELECT issue_code AS "issueCode",issue_description AS "issueDescription",issue_resolution AS "issueResolution",id FROM issues`
     );
 
     return NextResponse.json(

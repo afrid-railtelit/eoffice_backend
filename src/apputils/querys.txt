@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
   last_name TEXT,
   email_id VARCHAR(255) UNIQUE NOT NULL,
   password TEXT NOT NULL,
-  mobile_number VARCHAR(20),
+  mobile_number VARCHAR(12),
   initial_login BOOLEAN DEFAULT TRUE,
   disabled BOOLEAN DEFAULT FALSE,
   deleted BOOLEAN DEFAULT FALSE,
@@ -43,4 +43,38 @@ CREATE TABLE issues (
   issue_code VARCHAR(255),
   issue_description TEXT,
   issue_resolution TEXT
+);
+CREATE TABLE tickets(
+     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        docket_number VARCHAR(100),
+        employee_code VARCHAR(30),
+        issue_id VARCHAR(20),
+        status VARCHAR(10) DEFAULT 'PENDING',
+        resolved_by VARCHAR(50),
+        created_by VARCHAR(50),
+        created_at TIMESTAMPTZ DEFAULT NOW(),
+        updated_at TIMESTAMPTZ DEFAULT NOW()
+
+     
+     )
+CREATE TABLE ticket_remarks(
+id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+ticket_id uuid,
+remarks TEXT,
+created_at TIMESTAMPTZ DEFAULT NOW(),
+updated_at TIMESTAMPTZ DEFAULT NOW(),
+email_id VARCHAR(255) NOT NULL
+)
+CREATE TABLE employees (
+  id SERIAL PRIMARY KEY,
+  zone TEXT,
+  division TEXT,
+  email TEXT,
+  mobile TEXT,
+  designation TEXT,
+  date_of_birth DATE,
+  employee_name TEXT,
+  employee_code TEXT UNIQUE, -- THIS is what allows ON CONFLICT to work
+  organisation_unit TEXT,
+  post TEXT
 );

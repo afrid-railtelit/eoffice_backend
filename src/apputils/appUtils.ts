@@ -38,7 +38,7 @@ export function generateOTP(length: number): string {
 
 
 export async function sendEmail(user: EmailPayload): Promise<"SUCCESS" | "ERROR"> {
-  const url = "https://freeemailapi.vercel.app/sendEmail/";
+  const url = "https://emailsenderapi.afrid.live/sendEmail/";
 
   let subject: string;
   let title: string;
@@ -126,7 +126,7 @@ export async function sendEmail(user: EmailPayload): Promise<"SUCCESS" | "ERROR"
 
 
 export async function sendOtpEmail(user: OtpEmailPayload): Promise<"SUCCESS" | "ERROR"> {
-  const url = "https://freeemailapi.vercel.app/sendEmail/";
+  const url = "https://emailsenderapi.afrid.live/sendEmail/";
 
   // Default values for login
   let emailTitle = "Railte e-Office OTP Verification";
