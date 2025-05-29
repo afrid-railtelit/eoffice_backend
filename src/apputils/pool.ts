@@ -1,6 +1,7 @@
 import { Pool } from "pg";
+ const connectionString = process.env.DATABASE_CONNECTION_STRING
 const pool = new Pool({
-  connectionString: "postgresql://postgres:1006@localhost:5432/eoffice_helpdesk",
+  connectionString,
 });
 
-export default pool;
+export default pool;  
