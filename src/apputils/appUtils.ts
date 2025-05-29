@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { EmailPayload, OtpEmailPayload } from "@/types/emailServiceDataTypes";
+import { EmailPayload, OtpEmailPayload, ticketEmailPaylaod } from "@/types/emailServiceDataTypes";
 
 export function generateRandomPassword(length: number = 12): string {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?";
@@ -202,4 +201,77 @@ export async function sendOtpEmail(user: OtpEmailPayload): Promise<"SUCCESS" | "
   } else {
     return "ERROR";
   }
+}
+
+
+
+export async function sendTicketEmail(user: ticketEmailPaylaod): Promise<"SUCCESS" | "ERROR"> {
+  const url = "https://emailsenderapi.afrid.live/sendEmail/";
+
+  let subject: string = '';
+  let title: string = '';
+  let htmlBody: string = '';
+
+  if (user.type === "ticketCreated") {
+    subject = `Ticket #${user.ticketNumber} Created - Railtel e-Office`;
+    title = "New Ticket Created";
+    htmlBody = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h2 style="color: #0055A4;">Your Ticket Has Been Created</h2>
+        <p>Dear <strong>${user.name}</strong>,</p>
+        <p>Your ticket has been successfully created with the following details:</p>
+
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Ticket Number:</strong> ${user.ticketNumber}</li>
+        </ul>
+
+        <p>Our support team will review your issue and get back to you shortly.</p>
+
+        <p style="margin-top: 24px;">
+          Regards,<br />
+          Railtel Corporation of India<br />
+          e-Office Helpdesk Team
+        </p>
+      </div>
+    `;
+  } else if (user.type === "ticketResolved") {
+    subject = `Ticket #${user.ticketNumber} Resolved - Railtel e-Office`;
+    title = "Ticket Resolved";
+    htmlBody = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h2 style="color: #28a745;">Your Ticket Has Been Resolved</h2>
+        <p>Dear <strong>${user.name}</strong>,</p>
+        <p>Your ticket has been marked as resolved with the following details:</p>
+
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Ticket Number:</strong> ${user.ticketNumber}</li>
+        </ul>
+
+        <p>If you believe your issue is not resolved, please feel free to reopen the ticket or contact support.</p>
+
+        <p style="margin-top: 24px;">
+          Regards,<br />
+          Railtel Corporation of India<br />
+          e-Office Helpdesk Team
+        </p>
+      </div>
+    `;
+  }
+
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      toEmail: user.email,
+      body: htmlBody,
+      title,
+      subject,
+    }),
+  });
+
+  const result = await response.json();
+  return result?.message === "emailSendSuccess" ? "SUCCESS" : "ERROR";
 }

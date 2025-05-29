@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { decodeString, generateOTP, sendOtpEmail } from "@/apputils/appUtils";
 import pool from "@/apputils/pool";
 import { NextResponse } from "next/server";

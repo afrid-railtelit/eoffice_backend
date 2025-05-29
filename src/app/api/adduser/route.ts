@@ -9,7 +9,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { email, mobile, firstName, lastName, users,level } = await req.json();
+    const { email, mobile, firstName, lastName, users, level } =
+      await req.json();
 
     if (
       (!/^\S+@\S+$/i.test(email) || firstName?.length < 3 || !firstName) &&
@@ -49,7 +50,9 @@ export async function POST(req: Request) {
         placeholders.push(
           `($${offset + 1}, $${offset + 2}, $${offset + 3}, $${offset + 4}, $${
             offset + 5
-          }, $${offset + 6}, $${offset + 7}, $${offset + 8}, $${offset + 9} , $${offset + 10} )`
+          }, $${offset + 6}, $${offset + 7}, $${offset + 8}, $${
+            offset + 9
+          } , $${offset + 10} )`
         );
       });
 
@@ -62,11 +65,14 @@ export async function POST(req: Request) {
             ON CONFLICT (email_id) DO NOTHING `;
 
         await pool.query(insertQuery, values);
-        return NextResponse.json({
-          data:"SUCCESS"
-        },{
-          status:200
-        })
+        return NextResponse.json(
+          {
+            data: "SUCCESS",
+          },
+          {
+            status: 200,
+          }
+        );
       }
     }
 
@@ -100,7 +106,7 @@ export async function POST(req: Request) {
         false,
         encodeString(tempPassword),
         "EMPLOYEE",
-        level
+        level,
       ]
     );
 

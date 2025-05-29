@@ -12,3 +12,19 @@ export type EmailPayload = {
   password?: string;
     enabled?: boolean;
 };
+
+export type ticketEmailPaylaod =
+  | {
+      type: "ticketCreated";
+      name: string;
+      email: string;
+      ticketNumber: string;
+      subject: string;
+    }
+  | {
+      type: "ticketResolved";
+      name: string;
+      email: string;
+      ticketNumber: string;
+      subject: string;
+    };

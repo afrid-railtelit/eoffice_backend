@@ -36,7 +36,7 @@ export async function POST(req: Request) {
           user["Employee name"],
           user["Employee code"],
           user["Organisation unit"],
-          user["post"]
+          user["Post"]
         );
 
         placeholders.push(

@@ -14,7 +14,10 @@ json_build_object(
 'employeeMobile',e.mobile,
 'employeeCode',e.employee_code,
 'employeeDateOfBirth',e.date_of_birth,
-'employeeEmail',e.email
+'employeeEmail',e.email,
+'zone',e.zone,
+'division',e.division,
+'designation',e.designation
 ) AS "employeeData",
  
 
@@ -22,7 +25,7 @@ json_build_object(
 'issueCode',i.issue_code,
 'issueDescription',i.issue_description,
 'issueId',i.id,
-'issueResolution',issue_resolution
+'issueResolution',t.issue_resolution
 ) as "issueData",
 t.created_by AS "createdBy",
 t.created_at as "createdAt",
@@ -72,7 +75,7 @@ LIMIT $2
         `%${criticalLevel}%`,
       ]
     );
-    const totalCount = result.rows[0]?.total;
+    const totalCount = result.rows[0]?.total?result.rows[0]?.total:0;
 
     return NextResponse.json({
       data: "SUCCESS",
